@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Map Company – Building Solutions, Shaping Futures.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e2c375;
+      --dark: #111214;
+      --dark2: #1a1c20;
+      --dark3: #22252b;
+      --mid: #2e3138;
+      --text: #d4d6da;
+      --text-muted: #888c96;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* ── TOP BAR ── */
+    .topbar {
+      background: var(--dark2);
+      border-bottom: 1px solid #2a2c30;
+      padding: 8px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .topbar a { color: var(--text-muted); text-decoration: none; }
+    .topbar a:hover { color: var(--gold); }
+    .topbar-left { display: flex; gap: 24px; align-items: center; }
+    .topbar-right { display: flex; gap: 14px; }
+    .topbar-right a { font-size: 14px; }
+
+    /* ── NAVBAR ── */
+    nav {
+      background: var(--dark);
+      border-bottom: 1px solid #2a2c30;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: 72px;
+    }
+    .logo img {
+      height: 52px;
+      object-fit: contain;
+    }
+    .nav-links {
+      display: flex;
+      gap: 4px;
+      list-style: none;
+    }
+    .nav-links a {
+      display: block;
+      padding: 8px 18px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 90px 40px; }
+    section:nth-child(even) { background: var(--dark2); }
+
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .section-intro {
+      max-width: 680px;
+      color: var(--text-muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .gold-rule {
+      width: 56px;
+      height: 3px;
+      background: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    /* ── HERO ── */
+    #home {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      background: #0d0f12;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 40px;
+    }
+    #home .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+    #home::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(10,11,14,0.78) 0%, rgba(17,18,22,0.65) 60%, rgba(20,22,28,0.55) 100%);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      max-width: 720px;
+      z-index: 2;
+    }
+    .hero-content .section-title {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      margin-bottom: 24px;
+    }
+    .hero-content p {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin-bottom: 36px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--gold);
+      color: #111;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .hero-stats {
+      position: relative;
+      margin-top: 56px;
+      display: flex;
+      gap: 48px;
+    }
+    .hero-stat strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: var(--gold);
+    }
+    .hero-stat span {
+      font-size: 13px;
+      color: var(--text-muted);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .about-img {
+      position: relative;
+    }
+    .about-img img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      display: block;
+    }
+    .about-img::after {
+      content: '';
+      position: absolute;
+      bottom: -16px;
+      right: -16px;
+      width: 80%;
+      height: 80%;
+      border: 2px solid var(--gold);
+      z-index: -1;
+    }
+    .about-features {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .about-feature {
+      padding: 16px 20px;
+      border-left: 3px solid var(--gold);
+      background: var(--mid);
+    }
+    .about-feature h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .about-feature p { font-size: 14px; color: var(--text-muted); }
+
+    /* ── WHY CHOOSE ── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      max-width: 1100px;
+      margin: 48px auto 0;
+    }
+    .why-card {
+      background: var(--mid);
+      padding: 32px;
+      border-top: 3px solid var(--gold);
+    }
+    .why-card img { width: 48px; height: 48px; object-fit: contain; margin-bottom: 20px; filter: brightness(0) invert(0.7) sepia(1) saturate(2) hue-rotate(5deg); }
+    .why-card h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .why-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--gold);
+      padding: 50px 40px;
+    }
+    .stats-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      text-align: center;
+      gap: 16px;
+    }
+    .stat-item strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 2.6rem;
+      font-weight: 700;
+      color: #111;
+    }
+    .stat-item span {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(0,0,0,0.65);
+    }
+
+    /* ── PROJECTS SHARED ── */
+    .projects-grid {
+      max-width: 1200px;
+      margin: 48px auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+    .project-item {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .project-item:nth-child(even) { direction: rtl; }
+    .project-item:nth-child(even) > * { direction: ltr; }
+    .project-images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .project-images img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .project-images img:hover { transform: scale(1.03); }
+    .project-info { padding: 8px 0; }
+    .project-num {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 64px;
+      font-weight: 700;
+      color: var(--mid);
+      line-height: 1;
+      margin-bottom: -10px;
+    }
+    .project-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .project-info p { font-size: 15px; color: var(--text-muted); }
+
+    /* ── ENGINEERING ── */
+    #engineering { background: var(--dark); }
+    .eng-intro {
+      max-width: 1100px;
+      margin: 0 auto 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .eng-intro img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+    .eng-quote {
+      margin-top: 24px;
+      padding: 20px 24px;
+      border-left: 3px solid var(--gold);
+      font-style: italic;
+      color: var(--text-muted);
+      font-size: 15px;
+    }
+    .eng-badges {
+      margin-top: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .eng-badge {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .eng-badge::before {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── PROJECT MANAGEMENT ── */
+    #project-management .pm-intro {
+      max-width: 1100px;
+      margin: 0 auto 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    #project-management .pm-intro img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+    .pm-gallery {
+      max-width: 1100px;
+      margin: 0 auto 48px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+    .pm-gallery img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s;
+    }
+    .pm-gallery img:hover { transform: scale(1.04); }
+    .pm-future {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 48px 32px;
+      background: var(--mid);
+      border-top: 3px solid var(--gold);
+    }
+    .pm-future h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.7rem;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .pm-future p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--dark2);
+    }
+    .contact-grid {
+      max-width: 1100px;
+      margin: 48px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+    }
+    .contact-details h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .contact-block {
+      margin-bottom: 28px;
+    }
+    .contact-block h4 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+    .contact-block p { font-size: 15px; color: var(--text); line-height: 1.7; }
+    .contact-block a { color: var(--text); text-decoration: none; }
+    .contact-block a:hover { color: var(--gold); }
+    .hours-list { list-style: none; font-size: 15px; }
+    .hours-list li { padding: 4px 0; border-bottom: 1px solid var(--mid); display: flex; justify-content: space-between; gap: 16px; }
+    .hours-list li:last-child { border: none; }
+    .social-links { display: flex; gap: 14px; margin-top: 8px; }
+    .social-links a {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--mid);
+      color: var(--text);
+      font-size: 15px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .social-links a:hover { background: var(--gold); color: #111; }
+
+    .contact-form-side h3 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .form-group { margin-bottom: 16px; }
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 12px 14px;
+      background: var(--mid);
+      border: 1px solid #3a3d45;
+      color: var(--white);
+      font-family: 'Barlow', sans-serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus { border-color: var(--gold); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    /* ── MAP ── */
+    .map-section {
+      height: 320px;
+      overflow: hidden;
+      margin-top: 56px;
+    }
+    .map-section iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      filter: grayscale(60%) invert(10%);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      border-top: 1px solid #2a2c30;
+      padding: 64px 40px 32px;
+    }
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 2fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-about img { height: 44px; object-fit: contain; margin-bottom: 20px; }
+    .footer-about p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+    .footer-col h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 18px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 10px; }
+    .footer-col ul li a {
+      color: var(--text-muted);
+      font-size: 14px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-contact p { font-size: 14px; color: var(--text-muted); line-height: 1.8; }
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      border-top: 1px solid #2a2c30;
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* ── HAMBURGER BUTTON ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 0;
+      z-index: 1100;
+      position: relative;
+    }
+    .hamburger span {
+      display: block;
+      width: 26px;
+      height: 2px;
+      background: var(--white);
+      border-radius: 2px;
+      transition: transform 0.4s cubic-bezier(.77,0,.175,1), opacity 0.3s, width 0.3s;
+      transform-origin: center;
+    }
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+      background: var(--gold);
+    }
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+      width: 0;
+    }
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+      background: var(--gold);
+    }
+
+    /* ── MOBILE DRAWER ── */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 0; right: 0;
+      width: min(340px, 90vw);
+      height: 100dvh;
+      background: var(--dark);
+      z-index: 1050;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.45s cubic-bezier(.77,0,.175,1);
+      box-shadow: -8px 0 48px rgba(0,0,0,0.6);
+      overflow-y: auto;
+    }
+    .mobile-menu.open {
+      transform: translateX(0);
+    }
+    .mobile-menu-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 28px;
+      border-bottom: 1px solid #2a2c30;
+    }
+    .mobile-menu-header img { height: 40px; object-fit: contain; }
+
+    .mobile-close {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 22px;
+      cursor: pointer;
+      padding: 4px;
+      transition: color 0.2s;
+    }
+    .mobile-close:hover { color: var(--gold); }
+
+    .mobile-nav-links {
+      list-style: none;
+      padding: 16px 0;
+      flex: 1;
+    }
+    .mobile-nav-links li {
+      border-bottom: 1px solid #1e2025;
+      opacity: 0;
+      transform: translateX(24px);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .mobile-menu.open .mobile-nav-links li {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .mobile-menu.open .mobile-nav-links li:nth-child(1) { transition-delay: 0.08s; }
+    .mobile-menu.open .mobile-nav-links li:nth-child(2) { transition-delay: 0.14s; }
+    .mobile-menu.open .mobile-nav-links li:nth-child(3) { transition-delay: 0.20s; }
+    .mobile-menu.open .mobile-nav-links li:nth-child(4) { transition-delay: 0.26s; }
+    .mobile-menu.open .mobile-nav-links li:nth-child(5) { transition-delay: 0.32s; }
+
+    .mobile-nav-links a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 28px;
+      color: var(--text);
+      text-decoration: none;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 0.2s, padding-left 0.2s;
+    }
+    .mobile-nav-links a::after {
+      content: '→';
+      font-size: 14px;
+      color: var(--gold);
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .mobile-nav-links a:hover {
+      color: var(--gold);
+      padding-left: 36px;
+    }
+    .mobile-nav-links a:hover::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .mobile-nav-links a.active { color: var(--gold); }
+
+    .mobile-menu-footer {
+      padding: 28px;
+      border-top: 1px solid #2a2c30;
+    }
+    .mobile-menu-footer p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    .mobile-menu-footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      display: block;
+      margin-bottom: 4px;
+      transition: color 0.2s;
+    }
+    .mobile-menu-footer a:hover { color: var(--gold); }
+    .mobile-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .mobile-social a {
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--mid);
+      color: var(--text);
+      font-size: 14px;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+      border-radius: 2px;
+    }
+    .mobile-social a:hover { background: var(--gold); color: #111; }
+
+    /* ── OVERLAY ── */
+    .menu-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      z-index: 1040;
+      backdrop-filter: blur(0px);
+      transition: background 0.4s, backdrop-filter 0.4s;
+      pointer-events: none;
+    }
+    .menu-overlay.open {
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(4px);
+      pointer-events: all;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      section { padding: 64px 24px; }
+      nav { padding: 0 24px; }
+      .topbar { padding: 8px 24px; }
+      .about-grid, .eng-intro, #project-management .pm-intro,
+      .contact-grid, .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: repeat(2, 1fr); }
+      .project-item { grid-template-columns: 1fr; }
+      .project-item:nth-child(even) { direction: ltr; }
+      .pm-gallery { grid-template-columns: repeat(2, 1fr); }
+      .hero-stats { gap: 28px; flex-wrap: wrap; }
+      .form-row { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hamburger { display: flex; }
+      .mobile-menu { display: flex; }
+      .menu-overlay { display: block; }
+    }
+    @media (max-width: 560px) {
+      .topbar-left span:first-child { display: none; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-left">
+      <span><i class="fa fa-phone" style="color:var(--gold);margin-right:6px"></i> +27 10 023 1997</span>
+      <span><i class="fa fa-envelope" style="color:var(--gold);margin-right:6px"></i> info@mapcompany.co.za</span>
+    </div>
+    <div class="topbar-right">
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="logo">
+      <a href="#home">
+        <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/MAP-COMPANY-REBRANDED.png" alt="Map Company Logo" />
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#architectural">Architectural</a></li>
+      <li><a href="#engineering">Engineering</a></li>
+      <li><a href="#project-management">Project Management</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Open menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- MOBILE OVERLAY -->
+  <div class="menu-overlay" id="menuOverlay"></div>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/MAP-COMPANY-REBRANDED.png" alt="Map Company" />
+      <button class="mobile-close" id="mobileClose" aria-label="Close menu">
+        <i class="fa fa-times"></i>
+      </button>
+    </div>
+
+    <ul class="mobile-nav-links" id="mobileNavLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#architectural">Architectural</a></li>
+      <li><a href="#engineering">Engineering</a></li>
+      <li><a href="#project-management">Project Management</a></li>
+      <li><a href="#contact">Contact Us</a></li>
+    </ul>
+
+    <div class="mobile-menu-footer">
+      <p><i class="fa fa-phone" style="color:var(--gold);margin-right:6px"></i> +27 10 023 1997</p>
+      <a href="mailto:info@mapcompany.co.za"><i class="fa fa-envelope" style="color:var(--gold);margin-right:6px"></i> info@mapcompany.co.za</a>
+      <div class="mobile-social">
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+  <section id="home">
+    <video class="hero-video" autoplay muted loop playsinline>
+      <source src="Public/1197801-hd_1920_1080_25fps.mp4" type="video/mp4" />
+    </video>
+    <div class="hero-content">
+      <div class="section-label">Recognized for Quality, Year After Year</div>
+      <h1 class="section-title">Creating Structures That Stand the Test of Time</h1>
+      <p>We provide premium construction and engineering solutions that go beyond building — we transform bold visions into lasting realities. Where luxury meets innovation, precision meets creativity.</p>
+      <a href="#architectural" class="btn">See Our Projects</a>
+      <div class="hero-stats">
+        <div class="hero-stat"><strong>13+</strong><span>Years Experience</span></div>
+        <div class="hero-stat"><strong>93%</strong><span>Success Rate</span></div>
+        <div class="hero-stat"><strong>40+</strong><span>Professionals</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
+  <section id="about" style="background:var(--dark2);">
+    <div class="about-grid">
+      <div class="about-img">
+        <img src="https://mapcompany.co.za/wp-content/uploads/elementor/thumbs/Constructionn-rbnczuii9r17olnq98yx3jrit5jesyz9ncvydy30o0.jpg" alt="Construction" />
+      </div>
+      <div class="about-text">
+        <div class="section-label">Professional and Experienced</div>
+        <div class="gold-rule"></div>
+        <h2 class="section-title">Turning Your Vision Into Reality</h2>
+        <p class="section-intro">We pride ourselves on being a trusted leader in the construction industry, delivering projects that combine innovation, durability, and style. With years of proven experience, our team is committed to turning your vision into reality. Whether you're building from the ground up, renovating, or seeking high-end finishes, our expertise ensures that every detail is handled with precision and care.</p>
+        <div class="about-features">
+          <div class="about-feature">
+            <h4>13 Years of Experience</h4>
+            <p>From homes to commercial builds, we deliver with precision and quality.</p>
+          </div>
+          <div class="about-feature">
+            <h4>Defining Success</h4>
+            <p>We measure success through trust, quality builds, and happy clients.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ STATS ═══════════════════════════════ -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item"><strong>50,000+</strong><span>Client Consultations</span></div>
+      <div class="stat-item"><strong>93%</strong><span>Successful Projects</span></div>
+      <div class="stat-item"><strong>40+</strong><span>Professional Employees</span></div>
+      <div class="stat-item"><strong>20M+</strong><span>Recovered Cost</span></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════ WHY CHOOSE ═══════════════════════════════ -->
+  <section style="background:var(--dark);">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div style="text-align:center">
+        <div class="section-label">Professional and Experienced Company</div>
+        <div class="gold-rule" style="margin:0 auto 0;"></div>
+        <h2 class="section-title" style="margin-top:16px;">Why Choose Our Firm</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why-card">
+          <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/law-icon06-1-free-img.png" alt="Track Record" />
+          <h4>Excellent Track Record</h4>
+          <p>We've built a reputation for delivering projects on time and within budget, exceeding client expectations with every milestone.</p>
+        </div>
+        <div class="why-card">
+          <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/law-icon07-1-free-img.png" alt="Transparent Fees" />
+          <h4>Transparent Fees</h4>
+          <p>No hidden costs. We provide clear, detailed quotations so you know exactly what you're paying for.</p>
+        </div>
+        <div class="why-card">
+          <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/law-icon08-1-free-img.png" alt="Customer Service" />
+          <h4>Unparalleled Customer Service</h4>
+          <p>From planning to project completion, we keep communication open, ensuring you feel supported throughout the entire process.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ ARCHITECTURAL ═══════════════════════════════ -->
+  <section id="architectural" style="background:var(--dark2);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-label">Architectural</div>
+      <div class="gold-rule"></div>
+      <h2 class="section-title">Our Architectural Projects</h2>
+      <p class="section-intro">A showcase of our finest residential and commercial architectural work — each project a testament to craftsmanship and vision.</p>
+
+      <div class="projects-grid">
+        <div class="project-item">
+          <div class="project-images">
+            <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/Riversdale-one.jpg" alt="Riversdale House 1" />
+            <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/Riversdale-two.jpg" alt="Riversdale House 2" />
+          </div>
+          <div class="project-info">
+            <div class="project-num">01</div>
+            <h3>Riversdale House</h3>
+            <p>A perfect blend of modern design and lasting quality. Built to create comfort, style, and peace of mind.</p>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-images">
+            <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/Studentt-1.jpg" alt="Student Accommodation 1" />
+            <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/student-22.jpg" alt="Student Accommodation 2" />
+          </div>
+          <div class="project-info">
+            <div class="project-num">02</div>
+            <h3>Student Accommodation</h3>
+            <p>A perfect blend of modern design and lasting quality. Built to create comfort, style, and peace of mind.</p>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-images">
+            <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/Farm-house-2.jpg" alt="Farm House 1" />
+            <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/Farm-house.jpg" alt="Farm House 2" />
+          </div>
+          <div class="project-info">
+            <div class="project-num">03</div>
+            <h3>Farm House</h3>
+            <p>A perfect blend of modern design and lasting quality. Built to create comfort, style, and peace of mind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ ENGINEERING ═══════════════════════════════ -->
+  <section id="engineering">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-label">Engineering</div>
+      <div class="gold-rule"></div>
+      <h2 class="section-title">Engineering Department</h2>
+
+      <div class="eng-intro">
+        <div>
+          <p class="section-intro">This is where we showcase the backbone of our company — our dedicated engineering team. With strong expertise, practical knowledge, and innovative thinking, we design, plan, and execute projects that meet the highest standards of quality and safety.</p>
+          <p style="font-size:15px;color:var(--text-muted);margin-top:16px;">Our department specializes in delivering tailored engineering solutions that align with our clients' unique needs while pushing the boundaries of modern design and technology.</p>
+          <div class="eng-quote">
+            "Engineering is not just about structures; it's about building progress, shaping communities, and leaving a legacy of excellence."
+          </div>
+          <div class="eng-badges">
+            <div class="eng-badge">Qualified Engineers</div>
+            <div class="eng-badge">Over 10 Years of Experience</div>
+            <div class="eng-badge">Awards and Certificates</div>
+          </div>
+        </div>
+        <div>
+          <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/three-people-discussing-plan-factory-scaled.jpg" alt="Engineering Team" />
+        </div>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-item">
+          <div class="project-images">
+            <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/Pipe-one.jpg" alt="Pipeline One A" />
+            <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/pipe-two.jpg" alt="Pipeline One B" />
+          </div>
+          <div class="project-info">
+            <div class="project-num">01</div>
+            <h3>Pipeline One</h3>
+            <p>A structural engineering project we delivered with precision and quality.</p>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-images">
+            <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/pipe-three.jpg" alt="Pipeline Two A" />
+            <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/pipe-4.jpg" alt="Pipeline Two B" />
+          </div>
+          <div class="project-info">
+            <div class="project-num">02</div>
+            <h3>Pipeline Two</h3>
+            <p>A pipeline project successfully completed by our engineering team.</p>
+          </div>
+        </div>
+
+        <div class="project-item">
+          <div class="project-images">
+            <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/pipee.jpg" alt="Pipeline Three A" />
+            <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/pipeee-33.jpg" alt="Pipeline Three B" />
+          </div>
+          <div class="project-info">
+            <div class="project-num">03</div>
+            <h3>Pipeline Three</h3>
+            <p>Completed infrastructure project by our engineering department.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ PROJECT MANAGEMENT ═══════════════════════════════ -->
+  <section id="project-management" style="background:var(--dark2);">
+    <div style="max-width:1200px;margin:0 auto;">
+      <div class="section-label">Project Management</div>
+      <div class="gold-rule"></div>
+      <h2 class="section-title">Project Management</h2>
+
+      <div class="pm-intro">
+        <div>
+          <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/factory-manager-presents-business-models-investors-highlighting-strategies-scaled.jpg" alt="Project Management" />
+        </div>
+        <div>
+          <p class="section-intro">Our project management department ensures every stage of your project is executed with precision, efficiency, and accountability. From planning to delivery, we provide the structure, strategy, and oversight needed to meet deadlines, control costs, and exceed expectations.</p>
+          <p style="font-size:15px;color:var(--text-muted);margin-top:16px;">With our expertise, you gain peace of mind knowing your project is in capable hands.</p>
+        </div>
+      </div>
+
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--white);margin-bottom:24px;">Living Room Project</h3>
+      <div class="pm-gallery">
+        <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/A1.jpg" alt="A1" />
+        <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/A2.jpg" alt="A2" />
+        <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/A3.jpg" alt="A3" />
+        <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/A4.jpg" alt="A4" />
+        <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/A5.jpg" alt="A5" />
+        <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/A6.jpg" alt="A6" />
+      </div>
+
+      <div class="pm-future">
+        <h3>Innovating for the Future</h3>
+        <p>Our project management approach is not only about meeting today's demands but also about preparing for tomorrow's challenges. By integrating the latest technology, sustainable practices, and global standards, we ensure that every project adds lasting value. We believe true success lies in building projects that stand the test of time — through collaboration, innovation, and meticulous planning.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
+  <section id="contact">
+    <div style="max-width:1100px;margin:0 auto;">
+      <div class="section-label">Contact Us</div>
+      <div class="gold-rule"></div>
+      <h2 class="section-title">Get In Touch</h2>
+
+      <div class="contact-grid">
+        <div class="contact-details">
+          <h3>Contact Details</h3>
+
+          <div class="contact-block">
+            <h4>Head Office</h4>
+            <p>2nd Floor, Nelson Mandela Square<br>Maude Street West Tower, Sandton, 2146<br>
+            <a href="tel:0100231997">Tel: 010 023 1997</a> | <a href="tel:0845417929">084 541 7929</a><br>
+            <a href="mailto:info@mapcompany.co.za">info@mapcompany.co.za</a></p>
+          </div>
+
+          <div class="contact-block">
+            <h4>Durban Branch</h4>
+            <p>Erf 10233 Monaco Drive<br>Hyde Park Coastal, Estate, 4480<br>
+            <a href="tel:0320610500">Tel: 032 061 0500</a> | <a href="tel:0845417929">084 541 7929</a><br>
+            <a href="mailto:durban@mapcompany.co.za">durban@mapcompany.co.za</a></p>
+          </div>
+
+          <div class="contact-block">
+            <h4>Working Hours</h4>
+            <ul class="hours-list">
+              <li><span>Monday – Friday</span><span>9:00 AM – 5:00 PM</span></li>
+              <li><span>Saturday</span><span>10:00 AM – 2:00 PM</span></li>
+              <li><span>Sunday</span><span>Closed</span></li>
+            </ul>
+          </div>
+
+          <div class="contact-block">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+              <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-side">
+          <h3>Send Us A Message</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>First Name</label>
+              <input type="text" placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label>Last Name</label>
+              <input type="text" placeholder="Doe" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" placeholder="john@example.com" />
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+27 00 000 0000" />
+          </div>
+          <div class="form-group">
+            <label>Service Interested In</label>
+            <select>
+              <option value="">Select a service...</option>
+              <option>Architectural</option>
+              <option>Engineering</option>
+              <option>Project Management</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea placeholder="Tell us about your project..."></textarea>
+          </div>
+          <button class="btn" style="cursor:pointer;border:none;width:100%;font-size:14px;">Send Message</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="map-section" style="margin-top:64px;">
+      <iframe
+        src="https://maps.google.com/maps?q=Nelson+Mandela+Square+Sandton&t=m&z=15&output=embed&iwloc=near"
+        allowfullscreen
+        loading="lazy"
+        title="Map Company Location">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-about">
+        <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/MAP-COMPANY-REBRANDED.png" alt="Map Company" />
+        <p>Our construction business is dedicated to delivering high-quality, innovative building solutions. Every project is completed with excellence, integrity, and care.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#architectural">Architectural</a></li>
+          <li><a href="#engineering">Engineering</a></li>
+          <li><a href="#project-management">Project Management</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Support</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Blog & News</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h4>Contact</h4>
+        <p>
+          <strong style="color:var(--gold)">Head Office</strong><br>
+          Tel: 010 023 1997 | Cell: 084 541 7929<br>
+          2nd Floor, Nelson Mandela Square,<br>
+          Maude Street West Tower, Sandton, 2146<br>
+          <a href="mailto:info@mapcompany.co.za" style="color:var(--text-muted);text-decoration:none;">info@mapcompany.co.za</a><br><br>
+          <strong style="color:var(--gold)">Durban Branch</strong><br>
+          Erf 10233 Monaco Drive, Hyde Park Coastal, 4480<br>
+          Tel: 032 061 0500 | 084 541 7929<br>
+          <a href="mailto:durban@mapcompany.co.za" style="color:var(--text-muted);text-decoration:none;">durban@mapcompany.co.za</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>Copyright &copy; 2025 All Rights Reserved — Map Company</span>
+      <span>Built with precision &amp; care</span>
+    </div>
+  </footer>
+
+  <script>
+    // ── Mobile menu ──
+    const hamburger   = document.getElementById('hamburger');
+    const mobileMenu  = document.getElementById('mobileMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
+    const mobileClose = document.getElementById('mobileClose');
+    const mobileNavLinks = document.querySelectorAll('#mobileNavLinks a');
+
+    function openMenu() {
+      hamburger.classList.add('open');
+      mobileMenu.classList.add('open');
+      menuOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenu() {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      menuOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    hamburger.addEventListener('click', () =>
+      mobileMenu.classList.contains('open') ? closeMenu() : openMenu()
+    );
+    mobileClose.addEventListener('click', closeMenu);
+    menuOverlay.addEventListener('click', closeMenu);
+
+    // Close on nav link tap
+    mobileNavLinks.forEach(a => {
+      a.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+
+    // ── Active nav link on scroll (desktop + mobile) ──
+    const sections = document.querySelectorAll('section[id]');
+    const desktopLinks = document.querySelectorAll('.nav-links a');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          desktopLinks.forEach(a => a.classList.remove('active'));
+          mobileNavLinks.forEach(a => a.classList.remove('active'));
+          const dActive = document.querySelector(`.nav-links a[href="#${id}"]`);
+          const mActive = document.querySelector(`#mobileNavLinks a[href="#${id}"]`);
+          if (dActive) dActive.classList.add('active');
+          if (mActive) mActive.classList.add('active');
+        }
+      });
+    }, { threshold: 0.3 });
+
+    sections.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
