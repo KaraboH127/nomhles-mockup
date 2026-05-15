@@ -89,7 +89,6 @@
 
     /* ── SECTIONS ── */
     section { padding: 90px 40px; }
-    section:nth-child(even) { background: var(--dark2); }
 
     .section-label {
       font-family: 'Barlow Condensed', sans-serif;
@@ -131,25 +130,23 @@
       overflow: hidden;
       padding: 80px 40px;
     }
-    #home .hero-video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
     #home::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(10,11,14,0.78) 0%, rgba(17,18,22,0.65) 60%, rgba(20,22,28,0.55) 100%);
-      z-index: 1;
+      background: url('https://mapcompany.co.za/wp-content/uploads/2025/09/Riversdale-one.jpg') center/cover no-repeat;
+      opacity: 0.35;
+    }
+    #home::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(10,11,14,0.88) 0%, rgba(17,18,22,0.72) 55%, rgba(20,22,28,0.45) 100%);
     }
     .hero-content {
       position: relative;
       max-width: 720px;
-      z-index: 2;
+      z-index: 3;
     }
     .hero-content .section-title {
       font-size: clamp(2.4rem, 5vw, 4rem);
@@ -193,109 +190,6 @@
       color: var(--text-muted);
       letter-spacing: 0.06em;
       text-transform: uppercase;
-    }
-
-    /* ── ABOUT ── */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-    .about-img {
-      position: relative;
-    }
-    .about-img img {
-      width: 100%;
-      height: 480px;
-      object-fit: cover;
-      display: block;
-    }
-    .about-img::after {
-      content: '';
-      position: absolute;
-      bottom: -16px;
-      right: -16px;
-      width: 80%;
-      height: 80%;
-      border: 2px solid var(--gold);
-      z-index: -1;
-    }
-    .about-features {
-      margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .about-feature {
-      padding: 16px 20px;
-      border-left: 3px solid var(--gold);
-      background: var(--mid);
-    }
-    .about-feature h4 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 16px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-    .about-feature p { font-size: 14px; color: var(--text-muted); }
-
-    /* ── WHY CHOOSE ── */
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      max-width: 1100px;
-      margin: 48px auto 0;
-    }
-    .why-card {
-      background: var(--mid);
-      padding: 32px;
-      border-top: 3px solid var(--gold);
-    }
-    .why-card img { width: 48px; height: 48px; object-fit: contain; margin-bottom: 20px; filter: brightness(0) invert(0.7) sepia(1) saturate(2) hue-rotate(5deg); }
-    .why-card h4 {
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 10px;
-    }
-    .why-card p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
-
-    /* ── STATS BAR ── */
-    .stats-bar {
-      background: var(--gold);
-      padding: 50px 40px;
-    }
-    .stats-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      text-align: center;
-      gap: 16px;
-    }
-    .stat-item strong {
-      display: block;
-      font-family: 'Barlow Condensed', sans-serif;
-      font-size: 2.6rem;
-      font-weight: 700;
-      color: #111;
-    }
-    .stat-item span {
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(0,0,0,0.65);
     }
 
     /* ── PROJECTS SHARED ── */
@@ -345,7 +239,6 @@
     .project-info p { font-size: 15px; color: var(--text-muted); }
 
     /* ── ENGINEERING ── */
-    #engineering { background: var(--dark); }
     .eng-intro {
       max-width: 1100px;
       margin: 0 auto 56px;
@@ -709,7 +602,16 @@
       opacity: 1;
       transform: translateX(0);
     }
-    .mobile-nav-links a.active { color: var(--gold); }
+    .mobile-nav-links a.active {
+      color: var(--gold);
+      padding-left: 36px;
+      background: rgba(201, 168, 76, 0.07);
+      border-left: 3px solid var(--gold);
+    }
+    .mobile-nav-links a.active::after {
+      opacity: 1;
+      transform: translateX(0);
+    }
 
     .mobile-menu-footer {
       padding: 28px;
@@ -753,14 +655,12 @@
       inset: 0;
       background: rgba(0,0,0,0);
       z-index: 1040;
-      -webkit-backdrop-filter: blur(0px);
       backdrop-filter: blur(0px);
       transition: background 0.4s, backdrop-filter 0.4s;
       pointer-events: none;
     }
     .menu-overlay.open {
       background: rgba(0,0,0,0.65);
-      -webkit-backdrop-filter: blur(4px);
       backdrop-filter: blur(4px);
       pointer-events: all;
     }
@@ -770,10 +670,8 @@
       section { padding: 64px 24px; }
       nav { padding: 0 24px; }
       .topbar { padding: 8px 24px; }
-      .about-grid, .eng-intro, #project-management .pm-intro,
+      .eng-intro, #project-management .pm-intro,
       .contact-grid, .footer-grid { grid-template-columns: 1fr; gap: 36px; }
-      .why-grid { grid-template-columns: 1fr; }
-      .stats-inner { grid-template-columns: repeat(2, 1fr); }
       .project-item { grid-template-columns: 1fr; }
       .project-item:nth-child(even) { direction: ltr; }
       .pm-gallery { grid-template-columns: repeat(2, 1fr); }
@@ -788,7 +686,6 @@
     @media (max-width: 560px) {
       .topbar-left span:first-child { display: none; }
       .footer-grid { grid-template-columns: 1fr; }
-      .stats-inner { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
@@ -801,9 +698,9 @@
       <span><i class="fa fa-envelope" style="color:var(--gold);margin-right:6px"></i> info@mapcompany.co.za</span>
     </div>
     <div class="topbar-right">
-      <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-      <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="Linkedin"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+      <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
     </div>
   </div>
 
@@ -852,23 +749,20 @@
       <p><i class="fa fa-phone" style="color:var(--gold);margin-right:6px"></i> +27 10 023 1997</p>
       <a href="mailto:info@mapcompany.co.za"><i class="fa fa-envelope" style="color:var(--gold);margin-right:6px"></i> info@mapcompany.co.za</a>
       <div class="mobile-social">
-        <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-        <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="Linkedin"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
   </div>
 
   <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
   <section id="home">
-    <video class="hero-video" autoplay muted loop playsinline>
-      <source src="Public/1197801-hd_1920_1080_25fps.mp4" type="video/mp4" />
-    </video>
     <div class="hero-content">
-      <div class="section-label">Recognized for Quality, Year After Year</div>
-      <h1 class="section-title">Creating Structures That Stand the Test of Time</h1>
-      <p>We provide premium construction and engineering solutions that go beyond building — we transform bold visions into lasting realities. Where luxury meets innovation, precision meets creativity.</p>
-      <a href="#architectural" class="btn">See Our Projects</a>
+      <div class="section-label">Recognized for Excellence, Year After Year</div>
+      <h1 class="section-title">Designing Spaces That Inspire & Endure</h1>
+      <p>We deliver world-class architectural, engineering, and project management solutions — transforming bold visions into timeless spaces where precision meets creativity.</p>
+      <a href="#architectural" class="btn">Explore Our Work</a>
       <div class="hero-stats">
         <div class="hero-stat"><strong>13+</strong><span>Years Experience</span></div>
         <div class="hero-stat"><strong>93%</strong><span>Success Rate</span></div>
@@ -877,73 +771,10 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ ABOUT ═══════════════════════════════ -->
-  <section id="about" style="background:var(--dark2);">
-    <div class="about-grid">
-      <div class="about-img">
-        <img src="https://mapcompany.co.za/wp-content/uploads/elementor/thumbs/Constructionn-rbnczuii9r17olnq98yx3jrit5jesyz9ncvydy30o0.jpg" alt="Construction" />
-      </div>
-      <div class="about-text">
-        <div class="section-label">Professional and Experienced</div>
-        <div class="gold-rule"></div>
-        <h2 class="section-title">Turning Your Vision Into Reality</h2>
-        <p class="section-intro">We pride ourselves on being a trusted leader in the construction industry, delivering projects that combine innovation, durability, and style. With years of proven experience, our team is committed to turning your vision into reality. Whether you're building from the ground up, renovating, or seeking high-end finishes, our expertise ensures that every detail is handled with precision and care.</p>
-        <div class="about-features">
-          <div class="about-feature">
-            <h4>13 Years of Experience</h4>
-            <p>From homes to commercial builds, we deliver with precision and quality.</p>
-          </div>
-          <div class="about-feature">
-            <h4>Defining Success</h4>
-            <p>We measure success through trust, quality builds, and happy clients.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════ STATS ═══════════════════════════════ -->
-  <div class="stats-bar">
-    <div class="stats-inner">
-      <div class="stat-item"><strong>50,000+</strong><span>Client Consultations</span></div>
-      <div class="stat-item"><strong>93%</strong><span>Successful Projects</span></div>
-      <div class="stat-item"><strong>40+</strong><span>Professional Employees</span></div>
-      <div class="stat-item"><strong>20M+</strong><span>Recovered Cost</span></div>
-    </div>
-  </div>
-
-  <!-- ═══════════════════════════════ WHY CHOOSE ═══════════════════════════════ -->
-  <section style="background:var(--dark);">
-    <div style="max-width:1100px;margin:0 auto;">
-      <div style="text-align:center">
-        <div class="section-label">Professional and Experienced Company</div>
-        <div class="gold-rule" style="margin:0 auto 0;"></div>
-        <h2 class="section-title" style="margin-top:16px;">Why Choose Our Firm</h2>
-      </div>
-      <div class="why-grid">
-        <div class="why-card">
-          <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/law-icon06-1-free-img.png" alt="Track Record" />
-          <h4>Excellent Track Record</h4>
-          <p>We've built a reputation for delivering projects on time and within budget, exceeding client expectations with every milestone.</p>
-        </div>
-        <div class="why-card">
-          <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/law-icon07-1-free-img.png" alt="Transparent Fees" />
-          <h4>Transparent Fees</h4>
-          <p>No hidden costs. We provide clear, detailed quotations so you know exactly what you're paying for.</p>
-        </div>
-        <div class="why-card">
-          <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/law-icon08-1-free-img.png" alt="Customer Service" />
-          <h4>Unparalleled Customer Service</h4>
-          <p>From planning to project completion, we keep communication open, ensuring you feel supported throughout the entire process.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ═══════════════════════════════ ARCHITECTURAL ═══════════════════════════════ -->
   <section id="architectural" style="background:var(--dark2);">
     <div style="max-width:1200px;margin:0 auto;">
-      <div class="section-label">Architectural</div>
+      <div class="section-label">Architectural Division</div>
       <div class="gold-rule"></div>
       <h2 class="section-title">Our Architectural Projects</h2>
       <p class="section-intro">A showcase of our finest residential and commercial architectural work — each project a testament to craftsmanship and vision.</p>
@@ -989,9 +820,9 @@
   </section>
 
   <!-- ═══════════════════════════════ ENGINEERING ═══════════════════════════════ -->
-  <section id="engineering">
+  <section id="engineering" style="background:var(--dark);">
     <div style="max-width:1200px;margin:0 auto;">
-      <div class="section-label">Engineering</div>
+      <div class="section-label">Engineering Division</div>
       <div class="gold-rule"></div>
       <h2 class="section-title">Engineering Department</h2>
 
@@ -1056,7 +887,7 @@
   <!-- ═══════════════════════════════ PROJECT MANAGEMENT ═══════════════════════════════ -->
   <section id="project-management" style="background:var(--dark2);">
     <div style="max-width:1200px;margin:0 auto;">
-      <div class="section-label">Project Management</div>
+      <div class="section-label">Project Management Division</div>
       <div class="gold-rule"></div>
       <h2 class="section-title">Project Management</h2>
 
@@ -1124,9 +955,9 @@
           <div class="contact-block">
             <h4>Follow Us</h4>
             <div class="social-links">
-              <a href="https://facebook.com" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-              <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener" aria-label="Linkedin"><i class="fab fa-linkedin-in"></i></a>
+              <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+              <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+              <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin-in"></i></a>
             </div>
           </div>
         </div>
@@ -1185,7 +1016,7 @@
     <div class="footer-grid">
       <div class="footer-about">
         <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/MAP-COMPANY-REBRANDED.png" alt="Map Company" />
-        <p>Our construction business is dedicated to delivering high-quality, innovative building solutions. Every project is completed with excellence, integrity, and care.</p>
+        <p>A trusted leader in architectural design, engineering, and project management — delivering innovative, precision-crafted solutions with excellence and integrity.</p>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
