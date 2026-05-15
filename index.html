@@ -120,6 +120,127 @@
       margin-bottom: 28px;
     }
 
+    /* COMPANY PROFILE */
+    #company-profile {
+      background: var(--dark);
+    }
+    .profile-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(280px, 0.8fr) 1fr;
+      gap: 48px;
+      align-items: stretch;
+    }
+    .profile-identity,
+    .profile-card,
+    .division-panel {
+      background: var(--dark3);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-top: 3px solid var(--gold);
+    }
+    .profile-identity {
+      padding: 34px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .profile-identity h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 3vw, 2.6rem);
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .profile-identity p {
+      color: var(--text-muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .profile-reg {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .profile-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    .profile-card {
+      padding: 30px 28px;
+    }
+    .profile-card h3,
+    .division-panel h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .profile-card p,
+    .division-panel p,
+    .division-panel li {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    /* DIVISION DETAIL PANELS */
+    .division-detail {
+      max-width: 1100px;
+      margin: 44px auto 56px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .division-detail.two-col {
+      grid-template-columns: 1.2fr 0.8fr;
+    }
+    .division-panel {
+      padding: 28px 26px;
+    }
+    .division-panel h4 {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin: 18px 0 8px;
+    }
+    .division-panel h4:first-child { margin-top: 0; }
+    .division-panel ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+    .division-panel li { margin-bottom: 8px; }
+    .division-panel li:last-child { margin-bottom: 0; }
+    .credential-list {
+      list-style: none;
+      padding-left: 0;
+    }
+    .credential-list li {
+      padding: 8px 0 8px 18px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      position: relative;
+    }
+    .credential-list li::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: var(--gold);
+      position: absolute;
+      left: 0;
+      top: 18px;
+    }
+    .credential-list li:last-child { border-bottom: none; }
+
     /* ── HERO ── */
     #home {
       min-height: 88vh;
@@ -328,6 +449,107 @@
       margin-bottom: 16px;
     }
     .pm-future p { font-size: 15px; color: var(--text-muted); line-height: 1.8; }
+
+    /* WHY CHOOSE US */
+    #why-choose-us {
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    #why-choose-us::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(17,18,20,0.96) 0%, rgba(17,18,20,0.86) 58%, rgba(17,18,20,0.72) 100%),
+        url('https://mapcompany.co.za/wp-content/uploads/2025/09/factory-manager-presents-business-models-investors-highlighting-strategies-scaled.jpg') center/cover no-repeat;
+      opacity: 0.9;
+    }
+    .why-wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .why-header {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(320px, 1fr);
+      gap: 56px;
+      align-items: end;
+      margin-bottom: 44px;
+    }
+    .why-header .section-intro {
+      max-width: 560px;
+      justify-self: end;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+    .why-card {
+      min-height: 250px;
+      padding: 32px 28px;
+      background: rgba(34,37,43,0.88);
+      border: 1px solid rgba(201,168,76,0.16);
+      border-top: 3px solid var(--gold);
+      transition: transform 0.25s, border-color 0.25s, background 0.25s;
+    }
+    .why-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,168,76,0.42);
+      background: rgba(46,49,56,0.94);
+    }
+    .why-icon {
+      width: 52px;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(201,168,76,0.12);
+      color: var(--gold);
+      font-size: 21px;
+      margin-bottom: 24px;
+    }
+    .why-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .why-card p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+    .why-proof {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      background: rgba(26,28,32,0.9);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .why-proof-item {
+      padding: 26px 24px;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+    .why-proof-item:last-child { border-right: none; }
+    .why-proof-item strong {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: clamp(2rem, 3vw, 2.7rem);
+      line-height: 1;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .why-proof-item span {
+      display: block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
 
     /* ── CONTACT ── */
     #contact {
@@ -666,12 +888,26 @@
     }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 1120px) {
+      .nav-links a { padding: 8px 10px; font-size: 13px; }
+    }
+
     @media (max-width: 900px) {
       section { padding: 64px 24px; }
       nav { padding: 0 24px; }
       .topbar { padding: 8px 24px; }
+      .profile-grid,
+      .profile-cards,
+      .division-detail,
+      .division-detail.two-col,
       .eng-intro, #project-management .pm-intro,
+      .why-header,
       .contact-grid, .footer-grid { grid-template-columns: 1fr; gap: 36px; }
+      .why-header .section-intro { justify-self: start; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-proof { grid-template-columns: repeat(2, 1fr); }
+      .why-proof-item:nth-child(2) { border-right: none; }
+      .why-proof-item:nth-child(-n+2) { border-bottom: 1px solid rgba(255,255,255,0.08); }
       .project-item { grid-template-columns: 1fr; }
       .project-item:nth-child(even) { direction: ltr; }
       .pm-gallery { grid-template-columns: repeat(2, 1fr); }
@@ -686,6 +922,13 @@
     @media (max-width: 560px) {
       .topbar-left span:first-child { display: none; }
       .footer-grid { grid-template-columns: 1fr; }
+      .why-proof { grid-template-columns: 1fr; }
+      .why-proof-item,
+      .why-proof-item:nth-child(2) {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .why-proof-item:last-child { border-bottom: none; }
     }
   </style>
 </head>
@@ -713,9 +956,11 @@
     </div>
     <ul class="nav-links">
       <li><a href="#home">Home</a></li>
+      <li><a href="#company-profile">Company</a></li>
       <li><a href="#architectural">Architectural</a></li>
       <li><a href="#engineering">Engineering</a></li>
       <li><a href="#project-management">Project Management</a></li>
+      <li><a href="#why-choose-us">Why Us</a></li>
       <li><a href="#contact">Contact Us</a></li>
     </ul>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
@@ -739,9 +984,11 @@
 
     <ul class="mobile-nav-links" id="mobileNavLinks">
       <li><a href="#home">Home</a></li>
+      <li><a href="#company-profile">Company</a></li>
       <li><a href="#architectural">Architectural</a></li>
       <li><a href="#engineering">Engineering</a></li>
       <li><a href="#project-management">Project Management</a></li>
+      <li><a href="#why-choose-us">Why Us</a></li>
       <li><a href="#contact">Contact Us</a></li>
     </ul>
 
@@ -772,12 +1019,62 @@
   </section>
 
   <!-- ═══════════════════════════════ ARCHITECTURAL ═══════════════════════════════ -->
+  <!-- COMPANY PROFILE -->
+  <section id="company-profile">
+    <div class="profile-grid">
+      <div class="profile-identity">
+        <div class="section-label">Company Profile</div>
+        <h2>Maputuke Architects and Projects Pty Ltd</h2>
+        <p>Trading as Map Company, we deliver integrated architectural, engineering, and project management services across South Africa.</p>
+        <div class="profile-reg">Company Reg: 2013/112082/07</div>
+      </div>
+
+      <div class="profile-cards">
+        <article class="profile-card">
+          <h3>Our Mission</h3>
+          <p>To create and deliver the best in Architectural and Engineering, ensuring our clients are impressed at all times.</p>
+        </article>
+
+        <article class="profile-card">
+          <h3>Our Vision</h3>
+          <p>To be the Architectural and Engineering Company of choice in South Africa, educating, mentoring, and employing youth regularly.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURAL -->
   <section id="architectural" style="background:var(--dark2);">
     <div style="max-width:1200px;margin:0 auto;">
       <div class="section-label">Architectural Division</div>
       <div class="gold-rule"></div>
       <h2 class="section-title">Our Architectural Projects</h2>
       <p class="section-intro">A showcase of our finest residential and commercial architectural work — each project a testament to craftsmanship and vision.</p>
+
+      <div class="division-detail">
+        <article class="division-panel">
+          <h3>Core Services</h3>
+          <ul>
+            <li>Architectural design and supervision for Commercial, Industrial, Hotels, Resorts, Shopping Centres, Housing, and New Developments.</li>
+            <li>Warehousing and time management or contract development.</li>
+            <li>Design oversight from concept to completion.</li>
+          </ul>
+        </article>
+
+        <article class="division-panel">
+          <h3>Who We Serve</h3>
+          <p>Clients needing full architectural design, documentation, and site supervision across commercial, residential, and hospitality projects.</p>
+        </article>
+
+        <article class="division-panel">
+          <h3>Lead Professional</h3>
+          <p><strong style="color:var(--white);">Mr. S.N Sepeng</strong> - 14+ years experience in design and supervision.</p>
+          <ul class="credential-list">
+            <li>SACAP Registration: Pr Arch No. 28058175</li>
+            <li>MSAICE Registration: Pr No. 202000933</li>
+          </ul>
+        </article>
+      </div>
 
       <div class="projects-grid">
         <div class="project-item">
@@ -844,6 +1141,28 @@
         </div>
       </div>
 
+      <div class="division-detail two-col">
+        <article class="division-panel">
+          <h3>Structural &amp; Civil Engineering</h3>
+          <ul>
+            <li>Pile, raft and strip footing foundation.</li>
+            <li>RCC column, concrete and structural steel.</li>
+            <li>Storm water, ribs and blocks, pre-cast, and concrete analysis.</li>
+            <li>In-situ slab designs, soil investigation with geotech reports, and roads rehabilitation.</li>
+          </ul>
+        </article>
+
+        <article class="division-panel">
+          <h3>Company Accreditation</h3>
+          <p><strong style="color:var(--white);">Accredited with ECSA</strong> - Engineering Council of South Africa.</p>
+          <ul class="credential-list">
+            <li>Commitment and Undertaking Certificate: CU 20240042</li>
+            <li>Valid: 10/10/2024 to 10/09/2029</li>
+            <li>Mentorship Scheme established in accordance with ECSA's Training Requirements.</li>
+          </ul>
+        </article>
+      </div>
+
       <div class="projects-grid">
         <div class="project-item">
           <div class="project-images">
@@ -901,6 +1220,38 @@
         </div>
       </div>
 
+      <div class="division-detail">
+        <article class="division-panel">
+          <h3>Core Services</h3>
+          <ul>
+            <li>Project and resource planning.</li>
+            <li>Time management and contract administration procedures.</li>
+            <li>Cost control and management.</li>
+            <li>Project control services.</li>
+            <li>Labour intensive construction methods.</li>
+            <li>Project supervision and monitoring.</li>
+          </ul>
+        </article>
+
+        <article class="division-panel">
+          <h3>Delivery Strength</h3>
+          <p>We employ Architects, Civil and Structural Engineers, Quantity Surveyors, Plumbers, Electricians, Builders, and Project Managers.</p>
+          <p style="margin-top:12px;"><strong style="color:var(--white);">150+ people</strong> are on site across active projects.</p>
+        </article>
+
+        <article class="division-panel">
+          <h3>Accreditations &amp; Associations</h3>
+          <ul class="credential-list">
+            <li>CIDB Map Company: GB 6, CE 6</li>
+            <li>National Treasury CSD Supplier No: MAAA0486796</li>
+            <li>South African Institute of Occupational Safety and Health Reg No: 50425449</li>
+            <li>Compensation for Occupational Injuries and Diseases: 990001020712</li>
+            <li>South African Council for the Architectural Profession</li>
+            <li>South African Glass and Glazing Association</li>
+          </ul>
+        </article>
+      </div>
+
       <h3 style="font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--white);margin-bottom:24px;">Projects Gallery</h3>
       <div class="pm-gallery">
         <img src="https://mapcompany.co.za/wp-content/uploads/2025/09/A1.jpg" alt="A1" />
@@ -918,7 +1269,60 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════ CONTACT ═══════════════════════════════ -->
+  <!-- WHY CHOOSE US -->
+  <section id="why-choose-us">
+    <div class="why-wrap">
+      <div class="why-header">
+        <div>
+          <div class="section-label">Professional and Experienced Company</div>
+          <div class="gold-rule"></div>
+          <h2 class="section-title">Why Choose Our Firm</h2>
+        </div>
+        <p class="section-intro">We combine disciplined project delivery, clear cost communication, and attentive client service so every build moves forward with confidence from first brief to final handover.</p>
+      </div>
+
+      <div class="why-grid">
+        <article class="why-card">
+          <div class="why-icon" aria-hidden="true"><i class="fa fa-award"></i></div>
+          <h3>Excellent Track Record</h3>
+          <p>Our team has built a reputation for delivering architectural, engineering, and project management work with consistent quality, strong timelines, and dependable execution.</p>
+        </article>
+
+        <article class="why-card">
+          <div class="why-icon" aria-hidden="true"><i class="fa fa-file-invoice-dollar"></i></div>
+          <h3>Transparent Fees</h3>
+          <p>Clients receive clear quotations, practical scope guidance, and honest cost discussions so decisions can be made with full visibility before work begins.</p>
+        </article>
+
+        <article class="why-card">
+          <div class="why-icon" aria-hidden="true"><i class="fa fa-headset"></i></div>
+          <h3>Unparalleled Customer Service</h3>
+          <p>From planning through completion, we keep communication open, responsive, and useful so clients always know what is happening and what comes next.</p>
+        </article>
+      </div>
+
+      <div class="why-proof" aria-label="Company achievements">
+        <div class="why-proof-item">
+          <strong>13+</strong>
+          <span>Years Experience</span>
+        </div>
+        <div class="why-proof-item">
+          <strong>93%</strong>
+          <span>Successful Projects</span>
+        </div>
+        <div class="why-proof-item">
+          <strong>40+</strong>
+          <span>Professional Team</span>
+        </div>
+        <div class="why-proof-item">
+          <strong>50k+</strong>
+          <span>Client Consultations</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
   <section id="contact">
     <div style="max-width:1100px;margin:0 auto;">
       <div class="section-label">Contact Us</div>
@@ -985,12 +1389,16 @@
         <h4>Company</h4>
         <ul>
           <li><a href="#home">Home</a></li>
+          <li><a href="#company-profile">Company</a></li>
           <li><a href="#architectural">Architectural</a></li>
           <li><a href="#engineering">Engineering</a></li>
           <li><a href="#project-management">Project Management</a></li>
+          <li><a href="#why-choose-us">Why Choose Us</a></li>
           <li><a href="#contact">Contact Us</a></li>
         </ul>
       </div>
+      <!-- QUICK LINKS-->
+      <!--
       <div class="footer-col">
         <h4>Quick Links</h4>
         <ul>
@@ -1001,6 +1409,7 @@
           <li><a href="#">Blog & News</a></li>
         </ul>
       </div>
+      -->
       <div class="footer-col footer-contact">
         <h4>Contact</h4>
         <p>
