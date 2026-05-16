@@ -246,7 +246,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: url('https://mapcompany.co.za/wp-content/uploads/2025/09/Riversdale-one.jpg') center/cover no-repeat;
+      background: url('../Public/Riversdale-one.jpg') center/cover no-repeat;
       opacity: 0.35;
     }
     #home::after {
@@ -453,7 +453,7 @@
       inset: 0;
       background:
         linear-gradient(90deg, rgba(17,18,20,0.96) 0%, rgba(17,18,20,0.86) 58%, rgba(17,18,20,0.72) 100%),
-        url('https://mapcompany.co.za/wp-content/uploads/2025/09/factory-manager-presents-business-models-investors-highlighting-strategies-scaled.jpg') center/cover no-repeat;
+        url('../Public/project-management.jpg') center/cover no-repeat;
       opacity: 0.9;
     }
     .why-wrap {
